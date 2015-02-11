@@ -16,6 +16,18 @@ function init(){
 	    toggle("panel");
 	});
 
+	$("#fullscreenbutton").on("click",function(){
+		var iframe = $("iframe");
+		console.log(iframe);
+		if(iframe.webkitRequestFullScreen)
+			iframe.webkitRequestFullScreen();
+		else if(iframe.mozRequestFullScreen){
+			iframe.mozRequestFullScreen();
+		}else{
+			alert("Your browser does not support fullscreen!")
+		}
+	});
+
     
     
     document.onkeydown = function(event){
@@ -63,6 +75,8 @@ function toggleDocumentWindow(){
 	documentHidden = true;
     }
 }
+
+
 
 
 function updateshit(){

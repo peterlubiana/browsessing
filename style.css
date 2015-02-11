@@ -106,6 +106,14 @@ padding:20px;
 border-radius:200px;
 }
 
+#fullscreenbutton{
+	position:fixed;
+	top:450px;
+	padding:10px;
+	border-radius:200px;
+	background:red;
+}
+
 #editables{
 display:none;
 padding:20px;
