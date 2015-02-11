@@ -1,0 +1,113 @@
+DOCUMENTATION spillLib.js:
+
+######################################################################
+Entity - Object that is used to create 'things' in a game og simulaton.
+
+constructor(x,y);
+
+VARIABLES:
+x - the x position of the Entity.
+y - the y position of the Entity.
+img - An image that is used to represent an entity with draw();
+width - the width of the Entity
+height - the Height of the Entity
+
+FUNCTIONS:
+Rectangle getBounds(); - returns an Rectangle as specified in this library
+setImage(imgPath); - sets the image to be drawn using a path to the image.
+draw(); - draws the image that has been set.
+drawBounds(); - draws the outline of the bounds that have been set using the width and height.. which are set by the setImage(); method.
+giveInfo(canvasContext); - draws information about the object to screen
+update(); - method that can be overloaded. Typically to move the object and such.
+######################################################################
+
+
+
+
+######################################################################
+Rectangle - Object that is used in collision detection and for whatever a rectangle can be used for.
+
+Rectangle(x,y,width,height);
+
+VARIABLES:
+x - the x position of the rectangle
+y - the y potision of the rectangle
+width - the width of the rectangle
+height - the height of the rectangle
+
+FUCNTIONS:
+Rectangle getBounds(); - returns this Rectangle.
+
+######################################################################
+SpriteSheet - Object that is used in Animation of spritesheets.
+
+SpriteSheet(superObject,sheetPath,frameSizeX,frameSizeY,drawSpeed);
+
+
+VARIABLES:
+superObject - Object that has x and y values that the animation must be attached to.
+sheetPath - the path to the spriteSheetImage being used.
+frameSizeX - the Width of each Frame in the sheet
+frameSizeY - the Height of each Frame in the sheet
+drawSpeed - the amount of frames that the spritesheet should wait between animations.
+
+
+FUNCTIONS:
+drawNextFrame(canvasContext) - Draws the next frame in the spriteSheet at the x and y position of the superObject.
+getBounds() - returns an rectangle that is typically used for collision checking.
+
+######################################################################
+
+
+
+######################################################################
+MOUSE
+mouseX = the x Position of the Mouse!
+mouseY = the y Position of the mouse!
+
+mousePressed = boolean value that is true if the mouse is Pressed.
+######################################################################
+
+
+######################################################################
+KEYBOARD
+
+VARIABLES:
+upPressed - arrow up is pressed.
+downPressed - arrow down is pressed.
+leftPressed - arrow left is pressed.
+rightPressed - arrow right is pressed.
+wPressed - w is pressed.
+aPressed - a is pressed.
+sPressed - s is pressed.
+dPressed - d is pressed.
+######################################################################
+
+######################################################################
+
+TOUCHSCREEN
+touched - a Touch screen has been touched.
+leftTouched - the left side of a touchscreen has been touched.
+rightTouched - the right side of a touchscreen has been touched.
+twoTouches - two fingers detected on a screen
+threeTouches - three fingers detected on a screen
+fourTouches - four fingers detected on a screen
+posTouchX - the X-position of the first touch that happened.
+posTouchY - the Y-position of the first touch that happened.
+
+######################################################################
+
+######################################################################
+OTHER FUNCTIONS:
+
+boolean mouseOverRect(x,y,width,height); - function that can be used to detect if a mouse is over a specific point.
+
+boolean TouchOverRect(x,y,width,height); - function that can be used to detect if a touch is over a specific point.
+
+
+canvas(canvasId,canvasWidth,canvasHeight); - lets the user specify a canvas to draw to and a width and height of this canvas.
+
+init(); is called once when the document is loaded.
+draw(); is called for every frame that the canvas goes through, is ready to be overleaded.
+
+int random(from0ToThisNumber); - returns an integer between 0 and the specified number.

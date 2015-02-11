@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+  
+  <head>
+    <title>Browsessing - Code Processing in the browser!</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link href="http://fonts.googleapis.com/css?family=VT323" rel="stylesheet" type="text/css">
+    <script src="libs/jQuery.js"></script>
+    <script src="libs/processing-1.4.1.min.js"></script>
+    <script src="script.js"></script>
+
+  </head>
+  
+  <body>
+  
+    <h1>Browsessing - Code Processing in the browser!</h1>
+    <img id="logo" src="graphics/logo.png"/>
+    
+  </body>
+  
+  <div id="editables">
+    <textarea id="htmledit" ><center><canvas id="sketchWindow"></canvas><center> </textarea>
+    <textarea id="cssedit">
+      body{background:black;}
+      canvas{border-radius:3px;}
+    </textarea>
+    
+    <textarea id="psCode">
+
+class Circle {
+
+  PVector pos;
+  PVector vel;
+  PVector accel;
+  PVector force;
+  int size;
+  float gravity = 0.98;
+  float followspeed = 0.5;
+
+  Circle(float x, float y, int size) {
+    pos = new PVector(x, y);
+    vel = new PVector(0, 1);
+    force = new PVector(0,0);
+    accel = new PVector(0.5, 3);
+    this.size = size;
+  }
+
+  void update() {   
+    // Updates the position..
+
+
+    // Getting the difference in positions between the two points.
+    accel.x = mouseX - pos.x;
+    accel.y = mouseY - pos.y;
+
+    // calculating the distance between the points.
+    // Also the hypotenuse.
+    float magnitude = sqrt((accel.x*accel.x) +(accel.y * accel.y));
+
+    // Normalizing
+    if (magnitude != 0) {
+      accel.x = accel.x / magnitude;
+      accel.y = accel.y / magnitude;
+    }
+
+    // adding the followspeed to the acceleration.
+    // It is now normalized that means that the magnitude is equal to one
+    // x and y has numbers between 0 and 1. and simply points in a direction.
+    accel.x  *= followspeed;
+    accel.y  *= followspeed;
+
+
+// Adds the newly calculated Acceleration to the velocity.
+    vel.x += accel.x + force.x;
+    vel.y += accel.y + force.y;
+
+
+// Limits the top speed.
+    if (vel.x > 10)  
+      vel.x = 10;
+
+    if (vel.y > 10)
+      vel.y = 10;
+
+    // add velocity
+    pos.x += vel.x;
+    pos.y += vel.y;
+
+  }
+
+// Methods that enables a circle to draw itself.
+  void drawSelf() {
+    ellipse(pos.x, pos.y, size, size);
+  }
+}
+
+
+Circle[] circles = new Circle[1000];
+
+void setup() {
+  size(800, 600);
+  ellipseMode(CENTER);
+
+noStroke();
+
+  for (int i = 0;i< circles.length;i++) {
+    circles[i] = new Circle(random(0, width), random(0, height), 4);
+  }
+}
+
+void draw() {
+  background(0,200);
+
+fill(200,255,255);
+  for (int i = 0;i< circles.length;i++) {
+ 
+   if(mousePressed){
+       circles[i].force.x = random(-4,4);
+       circles[i].force.y = random(-4,4);
+}else{
+       circles[i].force.x = 0;
+       circles[i].force.y = 0;
+
+}
+    circles[i].update();    
+    circles[i].drawSelf();
+  }
+}
+
+    </textarea>
+  </div>
+
+  <div id="result">
+    <iframe seamless></iframe>
+  </div>
+<div id="panel">
+  <div id="documentationBtn">
+    Ref
+  </div>
+  
+  <div id="codeBtn">{}
+  </div>
+  
+  <div id="runbutton">
+    ->
+		    </div>
+  
+  <footer>
+    <a href="../"> <div id="back"> <- </div></a>
+				      </footer>
+  
+</div> <!-- panel ends -->
+
+</html>
