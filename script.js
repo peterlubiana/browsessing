@@ -73,7 +73,7 @@ function updateshit(){
     
     var head = "<!DOCTYPE html>"
 	+"<html><head>"
-	+"<style>"+$("#cssedit").val()+"</style>"
+	+"<style>"+$("#cssedit").val()+" canvas:focus{border:none;outline:0;}</style>"
 	+"<script src='libs/processing-1.4.1.min.js'></script>"
 	+"<script type='text/processing' data-processing-target='sketchWindow'>"
         +jsCode+"</script>"
