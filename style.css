@@ -1,12 +1,12 @@
 body{
 font-family:'VT323';
 color:black;
-background:white;
+background:red;
 }
 
 h2{
 display:block;
-font-size:20px;
+font-size:100px;
 }
 
 textarea{
