@@ -17,14 +17,27 @@ function init(){
 	});
 
 	$("#fullscreenbutton").on("click",function(){
-		var iframe = $("iframe");
-		console.log(iframe);
-		if(iframe.webkitRequestFullScreen)
-			iframe.webkitRequestFullScreen();
-		else if(iframe.mozRequestFullScreen){
-			iframe.mozRequestFullScreen();
+		var iframe = document.getElementById("iframe");
+		var doc = iframe.contentWindow.document;
+		var el = iframe; //doc.getElementById("sketchWindow");
+		console.log(document);
+		console.log(document.fullscreenEnabled);
+		console.log(document.webkitFullscreenEnabled);
+		console.log(document.mozFullscreenEnabled);
+		console.log(document.msFullscreenEnabled);
+
+		console.log("ELEMENT:");
+		console.log(el);
+		if(document.webkitFullscreenEnabled){
+			el.webkitRequestFullscreen();
+		}else if(document.mozRequestFullscreen){
+			el.mozRequestFullscreen();
+		}else if(document.msFullscreenEnabled){
+			el.msRequestFullscreen();
+		}else if(document.fullscreenEnabled){
+			el.requestFullscreen();
 		}else{
-			alert("Your browser does not support fullscreen!")
+			alert("Your browser does not support fullscreen!");
 		}
 	});
 
@@ -98,11 +111,13 @@ function updateshit(){
     var foot = "</body></html>";
 
     var iframe = document.createElement('iframe');
+    iframe.allowFullscreen = true;
     var result = document.getElementById('result');
     
     result.innerHTML = null;
     result.appendChild(iframe);
     
+    iframe.id = "iframe";
     iframe.contentWindow.document.open('text/html', 'replace');
     iframe.contentWindow.document.write(head+html+foot);
     iframe.contentWindow.document.close();
