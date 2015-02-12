@@ -23,15 +23,15 @@ function init(){
 		console.log(document);
 		console.log(document.fullscreenEnabled);
 		console.log(document.webkitFullscreenEnabled);
-		console.log(document.mozFullscreenEnabled);
+		console.log(document.mozFullScreenEnabled);
 		console.log(document.msFullscreenEnabled);
 
 		console.log("ELEMENT:");
 		console.log(el);
 		if(document.webkitFullscreenEnabled){
 			el.webkitRequestFullscreen();
-		}else if(document.mozRequestFullscreen){
-			el.mozRequestFullscreen();
+		}else if(document.mozFullScreenEnabled){
+			el.mozRequestFullScreen();
 		}else if(document.msFullscreenEnabled){
 			el.msRequestFullscreen();
 		}else if(document.fullscreenEnabled){
