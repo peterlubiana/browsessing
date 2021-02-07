@@ -6,7 +6,7 @@
     <title>Browsessing - Code Processing in the browser!</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link href="http://fonts.googleapis.com/css?family=VT323" rel="stylesheet" type="text/css">
+    <!--<link href="http://fonts.googleapis.com/css?family=VT323" rel="stylesheet" type="text/css">-->
     <script src="libs/jQuery.js"></script>
     <script src="libs/processing-1.4.1.min.js"></script>
     <script src="script.js"></script>
@@ -15,7 +15,7 @@
   
   <body>
   
-    <h1>Browsessing - Code Processing in the browser 10hi!</h1>
+    <h1><center>Browsessing - Code Processing.js in the browser!</center></h1>
     
   </body>
   
@@ -35,8 +35,8 @@ class Circle {
   PVector accel;
   PVector force;
   int size;
-  float gravity = 0.98;
-  float followspeed = 0.5;
+  float gravity = 2.98;
+  float followspeed = 0.8;
 
   Circle(float x, float y, int size) {
     pos = new PVector(x, y);
@@ -96,7 +96,7 @@ class Circle {
 }
 
 
-Circle[] circles = new Circle[1000];
+Circle[] circles = new Circle[100];
 
 void setup() {
   size(800, 600);
@@ -105,14 +105,14 @@ void setup() {
 noStroke();
 
   for (int i = 0;i< circles.length;i++) {
-    circles[i] = new Circle(random(0, width), random(0, height), 4);
+    circles[i] = new Circle(random(0, width), random(0, height), 10);
   }
 }
 
 void draw() {
   background(0,200);
 
-fill(200,255,255);
+fill(255,50,55);
   for (int i = 0;i< circles.length;i++) {
  
    if(mousePressed){
@@ -136,21 +136,21 @@ fill(200,255,255);
   </div>
 <div id="panel">
   <div id="documentationBtn">
-    Ref
+    Docs.
   </div>
   
-  <div id="codeBtn">{}
+  <div id="codeBtn">{Write Code}
   </div>
   
   <div id="runbutton">
-    ->
+    Run!
 		    </div>
 
   <div id="fullscreenbutton"> Fullscreen 
   </div>
   
   <footer>
-    <a href="../"> <div id="back"> <- </div></a>
+   <!-- <a href="../"> <div id="back"> <- </div></a> -->
 				      </footer>
   
 </div> <!-- panel ends -->
